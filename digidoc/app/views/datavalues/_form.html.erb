@@ -1,0 +1,29 @@
+<%= form_for(@datavalue) do |f| %>
+  <% if @datavalue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@datavalue.errors.count, "error") %> prohibited this datavalue from being saved:</h2>
+
+      <ul>
+      <% @datavalue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :fieldType %><br />
+    <%= f.text_field :fieldType %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
