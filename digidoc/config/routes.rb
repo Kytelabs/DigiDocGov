@@ -1,4 +1,16 @@
 Digidoc::Application.routes.draw do
+  resources :invoices
+
+
+  resources :datavalues
+
+
+  resources :datafields
+
+
+  resources :forms
+
+
   resources :tests
 
 

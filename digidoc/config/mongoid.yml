@@ -66,15 +66,27 @@ development:
 
     # Ensure all times are UTC in the app side. (default: false)
     # use_utc: false
-test:
+# test:
+#   sessions:
+#     default:
+#       database: digidoc_test
+#       hosts:
+#         - localhost:27017
+#       options:
+#         consistency: :strong
+#         # In the test environment we lower the retries and retry interval to
+#         # low amounts for fast failures.
+#         max_retries: 1
+#         retry_interval: 0
+
+#Heroku Settings
+production:
   sessions:
     default:
-      database: digidoc_test
-      hosts:
-        - localhost:27017
+      uri: <%= ENV['MONGOLAB_URI'] %>
       options:
-        consistency: :strong
-        # In the test environment we lower the retries and retry interval to
-        # low amounts for fast failures.
-        max_retries: 1
-        retry_interval: 0
+        skip_version_check: true
+        safe: true  
+  options:
+    use_activesupport_time_zone: false
+    use_utc: true

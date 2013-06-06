@@ -54,6 +54,8 @@ class InvoicesController < ApplicationController
           end
         end
 
+        HTTParty.get("https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=ramon@kytelabs.com&toname=Ramon%20Gonzalez&subject=Power%20Outlet%20Comsumption&text=Your%20power%20comsumption%20for%20FAN%20outlet%20is%20too%20high,%20over%20300%20watts.&from=rjgt04@gmail.com")
+
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
         format.json { render json: @invoice, status: :created, location: @invoice }
       else
