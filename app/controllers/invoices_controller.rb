@@ -64,7 +64,7 @@ class InvoicesController < ApplicationController
         format.json { render json: @invoice, status: :created, location: @invoice }
       else
         format.html { render action: "new" }
-        format.json { render json: @invoice.errors, status: :unprocessable_entity }
+        format.json { render json: @invoice.errors, status: :unprocessable_entity, :callback => params[:callback]  }
       end
     end
   end
@@ -73,6 +73,8 @@ class InvoicesController < ApplicationController
   # PUT /invoices/1.json
   def update
     @invoice = Invoice.find(params[:id])
+
+    ap 'ENTRO A HEROKU YEAH!!!!!'
 
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])

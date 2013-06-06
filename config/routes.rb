@@ -1,4 +1,7 @@
 Digidoc::Application.routes.draw do
+  resources :signatures
+
+
   resources :invoices
 
 
