@@ -641,6 +641,18 @@ textarea {
         top:50%;
         left:50%;
     }
+        .loading-form
+    {
+        position:absolute;
+        margin-top:-32px;
+        margin-left:-32px;
+        width:64px;
+        height:64px;
+        z-index:1000;
+        
+        top:50%;
+        left:50%;
+    }
 	
 	.wf-loading {
         visibility: hidden;
@@ -660,3 +672,14 @@ textarea {
 	{
 	    border:solid 2px red !important;   
 	}
+	.icon-check 
+	{
+	    background:none;
+        background-position: none;
+    }
+    
+    [class^="icon-"]:before, [class*=" icon-"]:before 
+    {
+        margin-top:8px;
+        margin-left:-3px !important;
+    }
