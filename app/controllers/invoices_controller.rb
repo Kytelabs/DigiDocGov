@@ -54,7 +54,7 @@ class InvoicesController < ApplicationController
           end
         end
 
-        message = "The%20following%20document%20requires%20your%20signature%20for%20approval. http://tonkabeta.kytelabs.com/examples/require-drawn-signature.html"
+        message = "The%20following%20document%20requires%20your%20signature%20for%20approval.%20http://tonkabeta.kytelabs.com/examples/require-drawn-signature.html"
         subject = "New%20Contract%20Request"
         email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{@invoice['signeeName']}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}"
 
