@@ -1,0 +1,29 @@
+﻿<!--
+  <%if experiment.current %>  
+    style = "color:blue;"
+  <% end%>
+
+    >   
+    <td><a href="/experiments?currentIndex=<%= experiment.id %>" > <%= experiment.title %></a></td>
+    <td><%= experiment.startTime %></td>
+    <td><%= experiment.endTime %></td>
+    <td><%= experiment.totalInterviews %></td>
+    <td><%= experiment.description %></td>
+    <td><%= experiment.custsegTitle %></td>
+    <td><%= link_to 'Show', experiment %></td>
+    <td><%= link_to 'Edit', edit_experiment_path(experiment) %></td>
+    <td><%= link_to 'Destroy', experiment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Experiment', new_experiment_path %>
+-->
+
+<h1>New experiment</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', experiments_path %>
