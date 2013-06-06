@@ -3,7 +3,7 @@ $(document).ready(function (e) {
         var parent = $(this).parent();
         if ($(this).val() != "") {
             if (parent.hasClass("demographics")) {
-                parent.append("<input name='demofields[][title]' class='input-xlarge' type='text' placeholder='Ex. Age, Gender, Degree, etc.' /> <select name='demofields[][typeof]'><option value='text'>Text Field</option></select> <br/>");
+                parent.append("<input name='demofields[][title]' class='input-xxlarge' type='text' placeholder='Ej. Tipo de Contrato, Jefe de Agencia, etc.' /><select name='demofields[][typeof]'><option value='text' selected>Text Field</option><option value='text'>Large Field</option><option value='text'>Radio Button</option></select> <br/>");
             }
             else if (parent.hasClass("pains")) {
                 parent.append("<input name='painhypos[][title]' class='input-xxlarge' type='text' placeholder='Ex. Too expensive, Too hard to understand, etc.'/>");
