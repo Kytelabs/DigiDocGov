@@ -10,7 +10,7 @@ class Form
   field :description, type: String
   field :createdTime, type: Date
 
-  validates_presence_of :title, :description, :createdTime
+  validates_presence_of :title, :description, :createdTime, :documentType
 
 # Fields that give the form its structure. 
   embeds_many :datafields # Example: [{"name": "email", "fieldType": "text"},{"name": "agency","fieldType": "text"},{"name": "role","fieldType": "text"}]
