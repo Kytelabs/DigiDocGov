@@ -3,13 +3,6 @@ class SignaturesController < ApplicationController
   # GET /signatures.json
   def index
     @signatures = Signature.all
-
-    signID = params[:signatureid]
-    payload = params[:output]
-
-    @thisInvoice = Invoice.where(:id => signID)
-    @thisInvoice.sinature = payload
-    @thisInvoice.signatureStatus = true
     
     respond_to do |format|
       format.html # index.html.erb
@@ -49,9 +42,15 @@ class SignaturesController < ApplicationController
   def create
     @signature = Signature.new(params[:signature])
 
-    Invoice.find(@signature.signatureid).set(:signatureid, @signature.signatureid)
-    Invoice.find(@signature.signatureid).set(:output, @signature.output)
-    Invoice.find(@signature.signatureid).set(:signatureStatus, true)
+    signatureID = params[:signatureid]
+    signature = params[:output]
+    ap "INFO:"
+    ap signatureID
+    ap signature
+
+    Invoice.find(signatureID).set(:signatureid, signatureID)
+    Invoice.find(signatureID).set(:output, signature)
+    Invoice.find(signatureID).set(:signatureStatus, true)
     
     respond_to do |format|
       if @signature.save
