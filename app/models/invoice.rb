@@ -24,8 +24,8 @@ class Invoice
   field :signeeName, type: String
   field :signeeAgency, type: String
   field :signeeRole, type: String
-  field :signature, type: Array  # [{"name": "email", "fieldType": "text"},{"name": "agency","fieldType": "text"},{"name": "role","fieldType": "text"}]
-
+  field :signature, type: Array  
+  
 # Embedded Relations
   embeds_many :datavalues
 end

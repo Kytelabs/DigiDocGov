@@ -4,6 +4,12 @@ class InvoicesController < ApplicationController
   def index
     @invoices = Invoice.all
 
+    # Handle invoices selection.
+    if params.has_key?(:currentIndex)
+      Invoice.where(:current => true).update(current: false) # Reset any selected invoice. 
+      Invoice.where(:_id => params[:currentIndex]).update(current: true)
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @invoices, :callback => params[:callback] }
@@ -54,10 +60,12 @@ class InvoicesController < ApplicationController
           end
         end
 
+        #Set email content. 
         message = "The%20following%20document%20requires%20your%20signature%20for%20approval.%20http://tonkabeta.kytelabs.com/examples/require-drawn-signature.html"
         subject = "New%20Contract%20Request"
         email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{@invoice['signeeName']}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}"
 
+        #Send email (with Sendgrid)
         HTTParty.get(email)
 
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }

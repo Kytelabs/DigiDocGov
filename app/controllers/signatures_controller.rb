@@ -44,12 +44,9 @@ class SignaturesController < ApplicationController
 
     signatureID = params[:signatureid]
     signature = params[:output]
-    ap "INFO:"
-    ap signatureID
-    ap signature
 
-    Invoice.find(signatureID).set(:signatureid, signatureID)
-    Invoice.find(signatureID).set(:output, signature)
+    # Update invoice with signature
+    Invoice.find(signatureID).set(:signature, signature)
     Invoice.find(signatureID).set(:signatureStatus, true)
     
     respond_to do |format|
