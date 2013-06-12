@@ -6,7 +6,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @invoices }
+      format.json { render json: @invoices, :callback => params[:callback] }
     end
   end
 

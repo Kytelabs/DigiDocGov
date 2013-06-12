@@ -47,22 +47,16 @@ class SignaturesController < ApplicationController
   # POST /signatures
   # POST /signatures.json
   def create
-
     @signature = Signature.new(params[:signature])
 
-    ap @signature.signatureid
-
-    @thisInvoice = Invoice.where(:id => @signature.signatureid)
-    ap thisInvoice.title
-
-    ap @thisInvoice.title
-    @thisInvoice.signature = @signature.output
-    @thisInvoice.signatureStatus = true
-
+    Invoice.find(@signature.signatureid).set(:signatureid, @signature.signatureid)
+    Invoice.find(@signature.signatureid).set(:output, @signature.output)
+    Invoice.find(@signature.signatureid).set(:signatureStatus, true)
+    
     respond_to do |format|
       if @signature.save
         format.html { redirect_to @signature, notice: 'Signature was successfully created.' }
-        format.json { render json: @signature, status: :created, location: @signature }
+        format.json { render json: @signature, status: :created, location: @signature, :callback => params[:callback] }
       else
         format.html { render action: "new" }
         format.json { render json: @signature.errors, status: :unprocessable_entity }
