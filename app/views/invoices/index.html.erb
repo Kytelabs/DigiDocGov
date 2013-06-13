@@ -131,7 +131,7 @@
             var hugeString = "<h1>Escoje Formulario</h1><br /><select id='formDropDown' style='width:300px;'>";
 
               for (var i = 0; i < response.length; i++) {
-                     hugeString += "<option value='" + response[i].id + "'>" + response[i].title + "</option>";
+                     hugeString += "<option value='" + response[i]._id + "'>" + response[i].title + "</option>";
               }
 
               hugeString += "</select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>"
