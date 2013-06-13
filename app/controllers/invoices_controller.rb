@@ -22,9 +22,9 @@ class InvoicesController < ApplicationController
     @invoice = Invoice.find(params[:id])
     @invoices = Invoice.all
 
-  # Update current.
-  Invoice.where(:current => true).update(current: false)
-  Invoice.find(params[:id]).update(current: true)
+    # Update current.
+    Invoice.where(:current => true).update(current: false)
+    Invoice.where(:_id => @invoice.id).update(current: true)
 
     respond_to do |format|
       format.html # show.html.erb
