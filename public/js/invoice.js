@@ -19,7 +19,7 @@ $(document).ready(function (e) {
             //<input name='datafields[][name]' class='input-xxlarge' type='text' placeholder='Ej. Tipo de Contrato, Jefe de Agencia, etc.' /> <select name='datafields[][fieldType]'><option value='text' selected>Text Field</option><option value='text'>Large Field</option><option value='text'>Radio Button</option></select>
             stringToAppend += "<input name='description' class='input-xxlarge' type='text' placeholder='" + datafields[i].name + "' /><br />";
         }
-        stringToAppend += "</div>";
+        stringToAppend += "</div> <hr />";
         $(".content-master").append(stringToAppend);
 
         stringToAppend = "<div class='control-group'><input name='creatorName' class='input-xlarge' type='text' placeholder='Nombre del solicitante' /><br/><input name='creatorEmail' class='input-xlarge' type='text' placeholder='Email del solicitante' /></div><div class='control-group'><input name='signeeName' class='input-large' type='text' placeholder='Nombre del firmante'/><br/><input name='signeeEmail' class='input-large' type='text' placeholder='Email del firmante'/></div>";
