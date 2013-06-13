@@ -3,12 +3,12 @@ $(document).ready(function (e) {
     console.log($.url().param('form'));
     var formID = $.url().param('form');
 
-     $(document).on("click", "#btn-add-invoice", function (e) {
+    $(document).on("click", "#btn-add-invoice", function (e) {
         var jsonForm = $('#formData').serializeObject();
         var jsonObject = JSON.stringify(jsonForm);
 
         console.log(jsonObject);
-        
+
         $.ajax({
             type: "POST",
             url: "http://digidocgov.herokuapp.com/invoices.json",
@@ -18,10 +18,10 @@ $(document).ready(function (e) {
             success: function (response) {
                 window.location.replace("/");
             }
-        });    
+        });
 
 
-     }
+    });
 
     $.getJSON('http://digidocgov.herokuapp.com/forms/' + formID + '.json', function (response) {
         $(".loading").fadeOut("slow", function () {
