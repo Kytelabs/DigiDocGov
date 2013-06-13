@@ -40,11 +40,11 @@
                 <span class="icon-bar">
                 </span>
               </button>
-              <a href="/" class="brand">Digidoc</a>
+              <a href="/invoices" class="brand">Digidoc</a>
               <div class="nav-collapse collapse">
                 <ul class="nav">
                   <li class="active">
-                    <a href="/">Home</a>
+                    <a href="/invoices">Home</a>
                   </li>
                   <li>
                     <a href="/forms">Formularios</a>
@@ -117,18 +117,25 @@
           <script src="js/main.js"></script>
           <script>
             $(document).ready(function (e) {
+
+            $(document).on("click", ".btn-next-form", function (e) {
+              $("#formDropDown option:selected").text();
+              console.log($("#formDropDown option:selected").text(););
+            });
+
+
             $(".btn-createInvoice").click(function (e) {
             $(this).addClass("active");
             $(".content-master").fadeOut("slow", function () {
             $(".loading").fadeIn("slow", function () {
 
             $.getJSON('http://digidocgov.herokuapp.com/forms.json?callback=?', function (response) {
-              
-              var hugeString = "<h1>Escoje Formulario</h1><br /><select style='width:300px;'>";
+
+            var hugeString = "<h1>Escoje Formulario</h1><br /><select id="formDropDown" style='width:300px;'>";
               
               for(var i = 0; i < response.length; i++)
               {
-                 hugeString += "<option value='text'>" + response[i].title + "</option>";
+                 hugeString += "<option value='" + response[i].id + "'>" + response[i].title + "</option>";
               }
 
               hugeString += "</select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>"
@@ -141,7 +148,7 @@
             });
 
 
-            $(".content-master").html("<option value='text' selected=''>Formulario al CIO</option><option value='text'>PRIDCO Formulario</option></select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>");
+            //$(".content-master").html("<option value='text' selected=''>Formulario al CIO</option><option value='text'>PRIDCO Formulario</option></select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>");
               
             });
             });
