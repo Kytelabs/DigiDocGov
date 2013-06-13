@@ -115,10 +115,12 @@
           <script>
             $(document).ready(function (e) {
 
-              $(document).on("click", ".btn-next-form", function (e) {
-                $("#formDropDown option:selected").text();
-                console.log($("#formDropDown option:selected").text());
-              });
+            $(document).on("click", "#btn-next-form", function (e) {
+            console.log($("#formDropDown option:selected").text());
+            var hstring = "/invoices/new?form=" + $("#formDropDown option:selected").text();
+            console.log(hstring);
+            window.location.replace(hstring);
+            });
 
 
             $(".btn-createInvoice").click(function (e) {
