@@ -20,6 +20,11 @@ class InvoicesController < ApplicationController
   # GET /invoices/1.json
   def show
     @invoice = Invoice.find(params[:id])
+    @invoices = Invoice.all
+
+  # Update current.
+  Invoice.where(:current => true).update(current: false)
+  Invoice.find(params[:id]).update(current: true)
 
     respond_to do |format|
       format.html # show.html.erb

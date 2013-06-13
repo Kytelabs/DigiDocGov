@@ -9,6 +9,7 @@ class Form
   field :documentType, type: String
   field :description, type: String
   field :createdTime, type: Date
+  field :agency, type: String
 
   validates_presence_of :title, :description, :documentType
 
