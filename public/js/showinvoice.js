@@ -1,6 +1,8 @@
 $(document).ready(function (e) {
 
-    $.getJSON($.url() + ".json", function (response) {
+    var pathname = window.location.pathname;
+    pathname += ".json";
+    $.getJSON( pathname, function (response) {
         $(".loading").fadeOut("slow", function () {
             $(".content-master").fadeIn("slow");
         });
@@ -11,12 +13,12 @@ $(document).ready(function (e) {
 
         for (var key in p) {
             if (p.hasOwnProperty(key) && validKey(key)) {
-                leString += "<p style='margin-top:2em; line-height:1.5em;'><strong>"+ key + ": </strong>" + p[key] + "<br/>";
+                leString += "<p style='margin-top:2em; line-height:1.5em;'><strong>" + key + ": </strong>" + p[key] + "<br/>";
             }
         }
 
         $(".content-master").html(leString);
-        
+
 
     });
 
