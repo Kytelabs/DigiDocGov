@@ -17,7 +17,7 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @form }
+      format.json { render json: @form, :callback => params[:callback] }
     end
   end
 

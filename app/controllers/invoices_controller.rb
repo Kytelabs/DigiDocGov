@@ -23,7 +23,7 @@ class InvoicesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @invoice }
+      format.json { render json: @invoice, :callback => params[:callback] }
     end
   end
 
@@ -61,11 +61,12 @@ class InvoicesController < ApplicationController
         end
 
         #Set email content. 
-        message = "The%20following%20document%20requires%20your%20signature%20for%20approval.%20http://tonkabeta.kytelabs.com/examples/require-drawn-signature.html"
-        subject = "New%20Contract%20Request"
-        email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{@invoice['signeeName']}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}"
+        subject = "Solicitud%20de%20Contrato"
+        footer = "%0D%0DGracias,%0D%0D%5F%5F%0D%0D#{@invoice['creatorName']}"
+        message = "El%20siguiente%20documento%20requiere%20su%20firma%20para%20aprobaci%C3%B3n.%0D%0Dhttp://tonkabeta.kytelabs.com/examples/require-drawn-signature.html?signatureid=#{@invoice.id}#{footer}"
+        email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{@invoice['signeeName']}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}&fromname=#{@invoice['creatorName']}"
 
-        #Send email (with Sendgrid)
+        #Send email to request signature (with Sendgrid)
         HTTParty.get(email)
 
         format.html { redirect_to @invoice, notice: 'Invoice was successfully created.' }
@@ -81,8 +82,6 @@ class InvoicesController < ApplicationController
   # PUT /invoices/1.json
   def update
     @invoice = Invoice.find(params[:id])
-
-    ap 'ENTRO A HEROKU YEAH!!!!!'
 
     respond_to do |format|
       if @invoice.update_attributes(params[:invoice])
