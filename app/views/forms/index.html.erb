@@ -79,7 +79,7 @@
 										
 										<% @forms.each do |form| %>
 											<tr data-container="body" rel="tooltip" data-toggle="tooltip">
-												<td><a class="table-anchor" href="http://leanpad.herokuapp.com/interviews/<%= form.id %>.json"><%= form_current %></a></td>
+												<td><a class="table-anchor" href="http://digidocgov.herokuapp.com/invoices/<%= form.id %>.json"><%= form_count %></a></td>
 												<td><%= form.title %></td>
 												<td><%= form.agency %></td>
 												<td><%= form.createdTime %></td>
@@ -90,6 +90,7 @@
 													<td><%= link_to 'Edit', edit_form_path(form) %></td>
 												-->
 											</tr>
+										<% form_count = form_count + 1 %>
 										<% end %>
                                           
                                         </tbody>
