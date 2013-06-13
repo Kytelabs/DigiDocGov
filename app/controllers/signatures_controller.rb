@@ -44,11 +44,15 @@ class SignaturesController < ApplicationController
 
     signatureID = params[:signatureid]
     signature = params[:output]
+    canvasHeight = params[:canvasHeight]
+    canvasWidth = params[:canvasWidth]
 
     # Update invoice with signature
     @invoice = Invoice.find(signatureID)
     Invoice.find(signatureID).set(:signature, signature)
     Invoice.find(signatureID).set(:signatureStatus, true)
+    Invoice.find(signatureID).set(:canvasHeight, canvasHeight)
+    Invoice.find(signatureID).set(:canvasWidth, canvasWidth) 
 
     #Set email content. 
     subject = "Solicitud%20de%20Contrato"
