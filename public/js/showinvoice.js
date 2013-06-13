@@ -34,7 +34,7 @@ function executeSignature() {
     var pathname = window.location.pathname;
     pathname += ".json";
     $.get(pathname, function (sig) {
-        var new_width = 500;  // CHOOSE WIDTH HERE
+        var new_width = 1000;  // CHOOSE WIDTH HERE
         var new_height = (sig.canvasHeight / sig.canvasWidth) * new_width;
         var width_scale = new_width / (sig.canvasWidth);
         var height_scale = new_height / (sig.canvasWidth);

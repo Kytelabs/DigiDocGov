@@ -70,7 +70,12 @@
                     </div>
                   </li>
                   <% @invoices.each do |invoice| %>
-                  <li>
+                  <li
+                   <%if invoice.current %>  
+                        class="active"
+                    <% end %>   
+                  
+                  >
                     <a class="sidebar-tab" href="/invoices/<%= invoice.id %>">
                       <span class="exp-digit">
                         <i
