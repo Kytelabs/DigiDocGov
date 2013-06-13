@@ -3,6 +3,26 @@ $(document).ready(function (e) {
     console.log($.url().param('form'));
     var formID = $.url().param('form');
 
+     $(document).on("click", "#btn-add-invoice", function (e) {
+        var jsonForm = $('#formData').serializeObject();
+        var jsonObject = JSON.stringify(jsonForm);
+
+        console.log(jsonObject);
+        
+        $.ajax({
+            type: "POST",
+            url: "http://digidocgov.herokuapp.com/invoices.json",
+            data: jsonObject,
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (response) {
+                window.location.replace("/");
+            }
+        });    
+
+
+     }
+
     $.getJSON('http://digidocgov.herokuapp.com/forms/' + formID + '.json', function (response) {
         $(".loading").fadeOut("slow", function () {
             $(".content-master").fadeIn("slow");
@@ -17,14 +37,14 @@ $(document).ready(function (e) {
         var stringToAppend = "<div class='control-group dynamicInputs dynamicForms'>";
         for (var i = 0; i < datafields.length; i++) {
             //<input name='datafields[][name]' class='input-xxlarge' type='text' placeholder='Ej. Tipo de Contrato, Jefe de Agencia, etc.' /> <select name='datafields[][fieldType]'><option value='text' selected>Text Field</option><option value='text'>Large Field</option><option value='text'>Radio Button</option></select>
-            stringToAppend += "<input name='description' class='input-xxlarge' type='text' placeholder='" + datafields[i].name + "' /><br />";
+            stringToAppend += "<input name='value' class='input-xxlarge' type='text' placeholder='" + datafields[i].name + "' /><input type='hidden' name='name' value='" + datafields[i].name + "'/><input type='hidden' name='fieldType' value='text'/><br />";
         }
         stringToAppend += "</div> <hr />";
         $(".content-master").append(stringToAppend);
 
         stringToAppend = "<div class='control-group'><input name='creatorName' class='input-xlarge' type='text' placeholder='Nombre del solicitante' /><br/><input name='creatorEmail' class='input-xlarge' type='text' placeholder='Email del solicitante' /></div><div class='control-group'><input name='signeeName' class='input-large' type='text' placeholder='Nombre del firmante'/><br/><input name='signeeEmail' class='input-large' type='text' placeholder='Email del firmante'/></div>";
         stringToAppend += "</form>";
-        stringToAppend += "<button id='btn-add-form' class='btn-add-unique btn btn-inverse pull-left' type='button'> Create Experiment</button>";
+        stringToAppend += "<button id='btn-add-invoice' class='btn-add-unique btn btn-inverse pull-left' type='button'>Enviar Solicitud<button>";
         $(".content-master").append(stringToAppend);
     });
 
