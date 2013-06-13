@@ -114,12 +114,11 @@
           <script src="js/main.js"></script>
           <script>
             $(document).ready(function (e) {
-            
-            var test = new Array();
-            
+
             $(document).on("click", "#btn-next-form", function (e) {
-              var position = $("#formDropDown option:selected").val();
-              var hstring = "/invoices/new?form=" + test[position];
+              console.log($("#formDropDown option:selected").text());
+              var hstring = "/invoices/new?form=" + $("#formDropDown option:selected").val();
+              console.log(hstring);
               window.location.replace(hstring);
             });
 
@@ -130,18 +129,14 @@
             $(".loading").fadeIn("slow", function () {
 
             $.getJSON('http://digidocgov.herokuapp.com/forms.json?callback=?', function (response) {
-
-            var hugeString = "<h1>Escoje Formulario</h1><br /><select id='formDropDown' style='width:300px;'>";
+            $(".content-master").html("");
+            $(".content-master").append("<h1>Escoje Formulario</h1><br /><select id='formDropDown' style='width:300px;'>");
 
               for (var i = 0; i < response.length; i++) {
-                     hugeString += "<option value='"+ i +"'>" + response[i].title + "</option>";
-                     test.push(response[i]._id);
-              }
+                     $(".content-master").append("<option value='" + response[i]._id + "'>" + response[i].title + "</option>");
+                }
 
-              hugeString += "</select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>"
-            
-      
-            $(".content-master").html(hugeString);
+                $(".content-master").append("</select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>");
 
             $(".loading").fadeOut("slow", function () {
             $(".content-master").fadeIn("slow");
