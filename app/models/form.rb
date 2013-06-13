@@ -8,7 +8,7 @@ class Form
   field :title, type: String
   field :documentType, type: String
   field :description, type: String
-  field :createdTime, type: Date
+  field :createdTime, type: Date, :default => Time.now
   field :agency, type: String
 
   validates_presence_of :title, :description, :documentType
