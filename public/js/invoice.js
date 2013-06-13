@@ -33,6 +33,9 @@ $(document).ready(function (e) {
         var massiveString = "<h1>Llenar Formulario</h1><form id='formData'><p style='margin-top:2em; line-height:1.5em;'><strong>Titulo: </strong>" + response.title + "<br/><strong>Descripcion: </strong>" + response.description + "<br/><strong>Agencia: </strong>" + response.agency + "<br/><strong>Tipo de Contrato: </strong>" + response.documentType + "</p><hr />";
 
         var datafields = response.datafields;
+        console.log(datafields);
+        console.log(response.datafields);
+        console.log(response);
 
         massiveString += "<div class='control-group dynamicInputs dynamicForms'><input name='title' class='input-xxlarge' type='text' placeholder='Titulo de la solicitud" + datafields[i].name + "' /><br/>";
         for (var i = 0; i < datafields.length; i++) {
