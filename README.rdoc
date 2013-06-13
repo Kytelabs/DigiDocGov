@@ -7,4 +7,7 @@ Whomever needs to approve the invoice will get notified through email. Invoices 
 including mobile devices. Once the invoice is signed, the creator of the invoice - whomever requested approval - gets 
 notified, through email, that the incoive has been approved.
 
+Note:
+Project started on another repo (https://github.com/Kytelabs/DigiDoc.git), but had some issues during the hackathon and
+thus we decided to clone it and move it into a new reposirtoy.
 
