@@ -30,22 +30,21 @@ $(document).ready(function (e) {
 
         $(".content-master").html("");
 
-        $(".content-master").append("<h1>Llenar Formulario</h1><form id='formData'><p style='margin-top:2em; line-height:1.5em;'><strong>Titulo: </strong>" + response.title + "<br/><strong>Descripcion: </strong>" + response.description + "<br/><strong>Agencia: </strong>" + response.agency + "<br/><strong>Tipo de Contrato: </strong>" + response.documentType + "</p><hr />");
+        var massiveString = "<h1>Llenar Formulario</h1><form id='formData'><p style='margin-top:2em; line-height:1.5em;'><strong>Titulo: </strong>" + response.title + "<br/><strong>Descripcion: </strong>" + response.description + "<br/><strong>Agencia: </strong>" + response.agency + "<br/><strong>Tipo de Contrato: </strong>" + response.documentType + "</p><hr />";
 
         var datafields = response.datafields;
 
-        var stringToAppend = "<div class='control-group dynamicInputs dynamicForms'>";
+        massiveString += "<div class='control-group dynamicInputs dynamicForms'>";
         for (var i = 0; i < datafields.length; i++) {
             //<input name='datafields[][name]' class='input-xxlarge' type='text' placeholder='Ej. Tipo de Contrato, Jefe de Agencia, etc.' /> <select name='datafields[][fieldType]'><option value='text' selected>Text Field</option><option value='text'>Large Field</option><option value='text'>Radio Button</option></select>
-            stringToAppend += "<input name='value' class='input-xxlarge' type='text' placeholder='" + datafields[i].name + "' /><input type='hidden' name='name' value='" + datafields[i].name + "'/><input type='hidden' name='fieldType' value='text'/><br />";
+            massiveString += "<input name='value' class='input-xxlarge' type='text' placeholder='" + datafields[i].name + "' /><input type='hidden' name='name' value='" + datafields[i].name + "'/><input type='hidden' name='fieldType' value='text'/><br />";
         }
-        stringToAppend += "</div> <hr />";
-        $(".content-master").append(stringToAppend);
+        massiveString += "</div> <hr />";
 
-        stringToAppend = "<div class='control-group'><input name='creatorName' class='input-xlarge' type='text' placeholder='Nombre del solicitante' /><br/><input name='creatorEmail' class='input-xlarge' type='text' placeholder='Email del solicitante' /></div><div class='control-group'><input name='signeeName' class='input-large' type='text' placeholder='Nombre del firmante'/><br/><input name='signeeEmail' class='input-large' type='text' placeholder='Email del firmante'/></div>";
-        stringToAppend += "</form>";
-        stringToAppend += "<button id='btn-add-invoice' class='btn-add-unique btn btn-inverse pull-left' type='button'>Enviar Solicitud<button>";
-        $(".content-master").append(stringToAppend);
+        massiveString += "<div class='control-group'><input name='creatorName' class='input-xlarge' type='text' placeholder='Nombre del solicitante' /><br/><input name='creatorEmail' class='input-xlarge' type='text' placeholder='Email del solicitante' /></div><div class='control-group'><input name='signeeName' class='input-large' type='text' placeholder='Nombre del firmante'/><br/><input name='signeeEmail' class='input-large' type='text' placeholder='Email del firmante'/></div>";
+        massiveString += "</form>";
+        massiveString += "<button id='btn-add-invoice' class='btn-add-unique btn btn-inverse pull-left' type='button'>Enviar Solicitud</button>";
+        $(".content-master").append(massiveString);
     });
 
 });
