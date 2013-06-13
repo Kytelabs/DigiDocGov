@@ -136,10 +136,8 @@
             hugeString = "";
             
               for (var i = 0; i < response.length; i++) {
-                     hugeString += "<option value='" + response[i]._id + "'>" + response[i].title + "</option>";
+                     $("#formDropDown").append("<option value='" + response[i]._id + "'>" + response[i].title + "</option>");
               }
-          
-            $("#formDropDown").html(hugeString);
 
             $(".loading").fadeOut("slow", function () {
             $(".content-master").fadeIn("slow");
