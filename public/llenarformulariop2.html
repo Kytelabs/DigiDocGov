@@ -41,8 +41,8 @@
                 <a href="#" class="brand">Digidoc</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li class="active"><a href="nindex.html">Home</a></li>
-                        <li><a href="formindex.html">Formularios</a></li>
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">Form Templates</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -52,7 +52,7 @@
             <div id="sidebar">
                 <div class="sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked">
-                        <li class="btn-createExperiment"><a href="llenarformulario.html" class="sidebar-tab"><span class="exp-digit">+</span><span
+                        <li class="btn-createExperiment active"><a class="sidebar-tab"><span class="exp-digit">+</span><span
                             class="exp-title">Llenar Formulario</span></a> </li>
                         <li>
                             <div class="seperator">
@@ -73,11 +73,33 @@
             </div>
             <div id="content">
                 <div class="container-fluid content-master" style="display:none;">
-                    <h1>Bienvenido a DigiDoc!</h1>
-                    <p style=" margin-top:2em; line-height:1.5em;">Puede ver un listado de las solicitudes ya firmadas a la derecha.</p>
-                                                       <div class="statcontainer">
-
-                                   </div>
+                    <h1>Llenar Formulario</h1>
+                  <hr />
+                    <form id="interviewData">
+                        <div class="control-group">
+                        	<input id="experiment_id" type="hidden" name="experiment_id" value="" />
+                            <p>Formulario al CIO</p>
+                            <input name="name" class="input-xxlarge" type="text" placeholder="Contract #" />
+                            <br/>
+                            <input name="email" class="input-xxlarge" type="text" placeholder="How awesome is the CIO?" />
+                        	<br/>
+                        </div>
+                    </form>
+                    <hr />
+                    <form id="Form1">
+                        <div class="control-group">
+                            <p>Signature Verification</p>
+                            <input name="name" class="input-xxlarge" type="text" placeholder="Signee Email" />
+                            <br/>
+                            <input id="email" name="semail" class="input-xxlarge" type="text" placeholder="Signee Name" />
+                        	<br/>
+                            <input name="remail" class="input-xxlarge" type="text" placeholder="Requester Email" />
+                        	
+                        </div>
+                         <button id="btn-send" class="btn btn-inverse pull-left" type="button">Send Verifcation</button>
+                    </form>
+                    
+                                                 
                 </div>
 
         </div>
@@ -96,6 +118,30 @@
 
     <script src="js/main.js"></script>
     <script src="js/plugins.js"></script>
+
+    <script>
+        $(document).ready(function (e) {
+            $("#btn-send").click(function (e) {
+                // var jsonForm = $('#interviewData').serializeObject();
+                //var jsonObject = JSON.stringify(jsonForm);
+                var email = $("#email").val();
+                console.log(email);
+
+                $.ajax({
+                    type: "POST",
+                    url: "http://digidocgov.herokuapp.com/invoices.json",
+                    data: '{"creatorEmail": "ramon@kytelabs.com","signeeEmail": "' + email + '","signeeName": "Giancarlo%20Gonzalez"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        window.location.replace("nindex.html");
+                    }
+                });
+            });
+        });
+    
+    </script>
+
     <!-- Google Analytics -->
      <script type="text/javascript">
 

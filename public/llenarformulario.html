@@ -41,8 +41,8 @@
                 <a href="#" class="brand">Digidoc</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li class="active"><a href="nindex.html">Home</a></li>
-                        <li><a href="formindex.html">Formularios</a></li>
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">Form Templates</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -52,7 +52,7 @@
             <div id="sidebar">
                 <div class="sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked">
-                        <li class="btn-createExperiment"><a href="llenarformulario.html" class="sidebar-tab"><span class="exp-digit">+</span><span
+                        <li class="btn-createExperiment active"><a class="sidebar-tab"><span class="exp-digit">+</span><span
                             class="exp-title">Llenar Formulario</span></a> </li>
                         <li>
                             <div class="seperator">
@@ -73,11 +73,17 @@
             </div>
             <div id="content">
                 <div class="container-fluid content-master" style="display:none;">
-                    <h1>Bienvenido a DigiDoc!</h1>
-                    <p style=" margin-top:2em; line-height:1.5em;">Puede ver un listado de las solicitudes ya firmadas a la derecha.</p>
-                                                       <div class="statcontainer">
-
-                                   </div>
+                    <h1>Escoje Formulario</h1>
+                    <br />
+                    
+                                <select name="demofields[][typeof]" style=" width:300px;">
+                                    <option value="text" selected>Formulario al CIO</option>
+                                    <option value="text">PRIDCO Formulario</option>
+                                </select>
+                                <br />
+                                <br />
+                                <button id="btn-next-form" class="btn btn-inverse pull-left" type="button"> Proximo </button>
+                                                 
                 </div>
 
         </div>
@@ -96,6 +102,17 @@
 
     <script src="js/main.js"></script>
     <script src="js/plugins.js"></script>
+
+    <script>
+        $(document).ready(function (e) {
+            $("#btn-next-form").click(function(e)
+            {
+                window.location.replace("llenarformulariop2.html");
+            })
+        });
+    
+    </script>
+
     <!-- Google Analytics -->
      <script type="text/javascript">
 
