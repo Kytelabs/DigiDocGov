@@ -12,6 +12,8 @@ class Invoice
   
   field :current, type: Boolean, :default => false 
   field :signatureStatus, type: Boolean, :default => false 
+  field :canvasHeight, type: String
+  field :canvasWidth, type: String
 
   # Creator Info
   field :creatorEmail, type: String
