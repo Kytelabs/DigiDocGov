@@ -6,7 +6,7 @@ class FormsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @forms }
+      format.json { render json: @forms, :callback => params[:callback] }
     end
   end
 
@@ -57,7 +57,7 @@ class FormsController < ApplicationController
         end
 
         format.html { redirect_to @form, notice: 'Form was successfully created.' }
-        format.json { render json: @form, status: :created, location: @form }
+        format.json { render json: @form, status: :created, location: @form, :callback => params[:callback] }
       else
         format.html { render action: "new" }
         format.json { render json: @form.errors, status: :unprocessable_entity }
