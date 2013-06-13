@@ -37,7 +37,7 @@ $(document).ready(function (e) {
         console.log(response.datafields);
         console.log(response);
 
-        massiveString += "<div class='control-group dynamicInputs dynamicForms'><input name='title' class='input-xxlarge' type='text' placeholder='Titulo de la solicitud" + datafields[i].name + "' /><br/>";
+        massiveString += "<div class='control-group dynamicInputs dynamicForms'><input name='title' class='input-xxlarge' type='text' placeholder='Titulo de la solicitud'/><br/>";
         for (var i = 0; i < datafields.length; i++) {
             //<input name='datafields[][name]' class='input-xxlarge' type='text' placeholder='Ej. Tipo de Contrato, Jefe de Agencia, etc.' /> <select name='datafields[][fieldType]'><option value='text' selected>Text Field</option><option value='text'>Large Field</option><option value='text'>Radio Button</option></select>
             massiveString += "<input name='value' class='input-xxlarge' type='text' placeholder='" + datafields[i].name + "' /><input type='hidden' name='name' value='" + datafields[i].name + "'/><input type='hidden' name='fieldType' value='text'/><br />";
