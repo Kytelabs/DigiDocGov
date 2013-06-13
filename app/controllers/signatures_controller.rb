@@ -60,7 +60,7 @@ class SignaturesController < ApplicationController
     #Set email content. 
     subject = "Solicitud%20de%20Contrato"
     footer = "%0D%0DGracias,%0D%0D%5F%5F%0D%0D#{signeeName}"
-    message = "El%20siguiente%20documento%20ha%20sido%20aprobado.%0D%0Dhttp://digidocgov.herokuapp.com/invoices/#{@invoice.id}.json#{footer}"
+    message = "El%20siguiente%20documento%20ha%20sido%20aprobado.%0D%0Dhttp://digidocgov.herokuapp.com/invoices/#{@invoice.id}#{footer}"
     email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['creatorEmail']}&toname=#{creatorName}&subject=#{subject}&text=#{message}&from=#{@invoice['signeeEmail']}&fromname=#{signeeName}"
 
 
