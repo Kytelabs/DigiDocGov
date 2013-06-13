@@ -4,6 +4,9 @@ $(document).ready(function (e) {
     var formID = $.url().param('form');
 
     $.getJSON('http://digidocgov.herokuapp.com/forms/' + formID + '.json', function (response) {
+        $(".loading").fadeOut("slow", function () {
+            $(".content-master").fadeIn("slow");
+        });
 
         $(".content-master").html("");
 
