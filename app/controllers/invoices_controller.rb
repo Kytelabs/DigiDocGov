@@ -1,6 +1,6 @@
 class InvoicesController < ApplicationController
   # GET /invoices
-  # GET /invoices.json
+  # GET /invoices.json  
   def index
     @invoices = Invoice.all
 
