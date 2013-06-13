@@ -131,15 +131,15 @@
             $.getJSON('http://digidocgov.herokuapp.com/forms.json?callback=?', function (response) {
             
             $(".content-master").html("");
-            var hugeString = "<h1>Escoje Formulario</h1><br /><select id='formDropDown' style='width:300px;'>";
-
+            var hugeString = "<h1>Escoje Formulario</h1><br /><select id='formDropDown' style='width:300px;'></select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>";
+            $(".content-master").html(hugeString);
+            hugeString = "";
+            
               for (var i = 0; i < response.length; i++) {
                      hugeString += "<option value='" + response[i]._id + "'>" + response[i].title + "</option>";
               }
-
-              hugeString += "</select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>"
           
-            $(".content-master").html(hugeString);
+            $("#formDropDown").html(hugeString);
 
             $(".loading").fadeOut("slow", function () {
             $(".content-master").fadeIn("slow");
@@ -147,7 +147,7 @@
             });
 
 
-            //$(".content-master").html("<option value='text' selected=''>Formulario al CIO</option><option value='text'>PRIDCO Formulario</option></select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>");
+            
 
             });
             });
