@@ -12,7 +12,7 @@ $(document).ready(function (e) {
         var leString = "<h1>Informacion de la Solicitud</h1>";
 
         for (var key in response) {
-            if (p.hasOwnProperty(key) && validKey(key)) {
+            if (response.hasOwnProperty(key) && validKey(key)) {
                 leString += "<p style='margin-top:2em; line-height:1.5em;'><strong>" + key + ": </strong>" + response[key] + "<br/>";
             }
         }
