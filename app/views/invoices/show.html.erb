@@ -116,30 +116,13 @@
 
           <script src="/js/vendor/jquery.serialize-object.compiled.js" type="text/javascript"></script>
           <script src="/js/vendor/purl.js"></script>
-          <script src="/js/showinvoice.js"></script>
         
           <script src="/js/plugins.js"></script>
 
           <script src="/js/vendor/jquery.signaturepad.min.js"></script>
 
-	        <script>		
-		        $(document).ready(function() {
-			        var _canvas = document.getElementById("signature-canvas");
-			        var _context = _canvas.getContext('2d');
-			        var pathname = window.location.pathname;
-                    pathname += ".json";
-			        $.get(pathname, function(sig) {
-				        var new_width = 500;  // CHOOSE WIDTH HERE
-				        var new_height = (sig.canvasHeight/sig.canvasWidth)* new_width;
-				        var width_scale = new_width/(sig.canvasWidth);
-				        var height_scale = new_height/(sig.canvasWidth);
-				        _context.scale(width_scale,height_scale);
-				        $('.sigPad').signaturePad({displayOnly:true}).regenerate(sig.signature);
-			        });
-		        });
-	        </script>
-
           <script src="/js/vendor/json2.min.js"></script>
+          <script src="/js/showinvoice.js"></script>
 
           <!-- Google Analytics -->
           <script type="text/javascript">
