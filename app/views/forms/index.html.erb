@@ -37,11 +37,11 @@
                     <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
                     </span>
                 </button>
-                <a href="#" class="brand">Digidoc</a>
+                <a href="/" class="brand">Digidoc</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li><a href="#">Home</a></li>
-                        <li class="active"><a href="#about">Formularios</a></li>
+                        <li><a href="/">Home</a></li>
+                        <li class="active"><a href="/forms">Formularios</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -79,7 +79,7 @@
 										
 										<% @forms.each do |form| %>
 											<tr data-container="body" rel="tooltip" data-toggle="tooltip">
-												<td><a class="table-anchor" href="http://digidocgov.herokuapp.com/invoices/<%= form.id %>.json"><%= form_count %></a></td>
+												<td><a class="table-anchor" href="http://digidocgov.herokuapp.com/forms/<%= form.id %>.json"><%= form_count %></a></td>
 												<td><%= form.title %></td>
 												<td><%= form.agency %></td>
 												<td><%= form.createdTime %></td>
