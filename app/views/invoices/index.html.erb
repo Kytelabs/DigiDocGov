@@ -117,7 +117,7 @@
 
             $(document).on("click", "#btn-next-form", function (e) {
             console.log($("#formDropDown option:selected").text());
-            var hstring = "/invoices/new?form=" + $("#formDropDown option:selected").val();
+            var hstring = "/invoices/new?form=" + $("#formDropDown option:selected").attr('id');
             console.log(hstring);
             window.location.replace(hstring);
             });
