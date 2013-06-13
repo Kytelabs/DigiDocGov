@@ -54,20 +54,22 @@
                   <h1>
                         Nuevo Formulario</h1>
                   <hr />
-                    <form id="experimentData">
+                    <form id="formData">
                         <div class="control-group">
                             <input name="title" class="input-xlarge" type="text" placeholder="Titulo" />
                             <br/>
                             <input name="description" class="input-xxlarge" type="text" placeholder="Descripcion" />
                             <br />
-                            <input name="description" class="input-xxlarge" type="text" placeholder="Agencia" />
+                            <input name="agency" class="input-xxlarge" type="text" placeholder="Agencia" />
+                            <br />
+                            <input name="documentType" class="input-xxlarge" type="text" placeholder="Tipo de Contrato" />
                         </div>
                         <h2>
                             Encasillados del Formulario</h2>
-                        <div class="control-group demographics dynamicInputs">
+                        <div class="control-group dynamicInputs dynamicForms">
                            
-                                <input name="demofields[][title]" class="input-xxlarge" type="text" placeholder="Ej. Tipo de Contrato, Jefe de Agencia, etc." />
-                                <select name="demofields[][typeof]">
+                                <input name="datafields[][name]" class="input-xxlarge" type="text" placeholder="Ej. Jefe de Agencia, Presupuesto, etc." />
+                                <select name="datafields[][fieldType]">
                                     <option value="text" selected>Text Field</option>
                                     <option value="text">Large Field</option>
                                     <option value="text">Radio Button</option>
@@ -76,7 +78,7 @@
                         </div>
                     </form>
                     <hr />
-                    <button id="btn-add-form" class="btn btn-inverse pull-left" type="button"> Create Experiment</button>
+                    <button id="btn-add-form" class="btn-add-unique btn btn-inverse pull-left" type="button"> Create Experiment</button>
                 </div>
             </div>
         </div>
@@ -92,13 +94,15 @@
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/addExperiment.js"></script>
     <script src="js/plugins.js"></script>
+    <script src="js/vendor/jquery.serialize-object.compiled.js" type="text/javascript"></script>
+    <script src="js/newfields.js"></script>
+    <script src="js/json.js"></script>
 
         <script>
             $(document).ready(function (e) {
                 $("#btn-add-form").click(function (e) {
-                    window.location.replace("formindexx.html");
+                    //window.location.replace("formindexx.html");
                 });
             });
     
