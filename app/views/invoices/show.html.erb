@@ -70,11 +70,10 @@
                   </li>
                   <% @invoices.each do |invoice| %>
                   <li>
-                    <a class="sidebar-tab" hhref="/invoices/"
-                      <%= invoice.id %>">
+                    <a class="sidebar-tab" hhref="/invoices/"<%= invoice.id %>">
                       <span class="exp-digit">
                         <i
-                          <%if invoice.signatureStatus="" %>
+                          <%if invoice.signatureStatus %>
                             class="icon-check"
                             <%else%>
                               class="icon-check-empty"
