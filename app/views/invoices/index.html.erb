@@ -91,7 +91,7 @@
             <div id="content">
               <div class="container-fluid content-master" style="display:none;">
                 <h1>Bienvenido a DigiDoc!</h1>
-                <p style=" margin-top:2em; line-height:1.5em;">Puede ver un listado de las solicitudes ya firmadas a la derecha.</p>
+                <p style=" margin-top:2em; line-height:1.5em;">Puede ver un listado de las solicitudes ya firmadas a la izquierda.</p>
                 <div class="statcontainer">
 
                 </div>
@@ -107,10 +107,7 @@
         </div>
         <!-- Javascript  -->
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script>
-          window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js">
-            <\/script>')
-          </script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.0.min.js"><\/script>')</script>
           <script src="js/vendor/bootstrap.min.js"></script>
           <script src="http://code.highcharts.com/highcharts.js"></script>
 
@@ -118,10 +115,10 @@
           <script>
             $(document).ready(function (e) {
 
-            $(document).on("click", ".btn-next-form", function (e) {
-              $("#formDropDown option:selected").text();
-              console.log($("#formDropDown option:selected").text());
-            });
+              $(document).on("click", ".btn-next-form", function (e) {
+                $("#formDropDown option:selected").text();
+                console.log($("#formDropDown option:selected").text());
+              });
 
 
             $(".btn-createInvoice").click(function (e) {
@@ -131,25 +128,24 @@
 
             $.getJSON('http://digidocgov.herokuapp.com/forms.json?callback=?', function (response) {
 
-            var hugeString = "<h1>Escoje Formulario</h1><br /><select id="formDropDown" style='width:300px;'>";
-              
-              for(var i = 0; i < response.length; i++)
-              {
-                 hugeString += "<option value='" + response[i].id + "'>" + response[i].title + "</option>";
+            var hugeString = "<h1>Escoje Formulario</h1><br /><select id='formDropDown' style='width:300px;'>";
+
+              for (var i = 0; i < response.length; i++) {
+                     hugeString += "<option value='" + response[i].id + "'>" + response[i].title + "</option>";
               }
 
               hugeString += "</select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>"
-              
-              $(".content-master").html(hugeString);
-              
-              $(".loading").fadeOut("slow", function () {
-                $(".content-master").fadeIn("slow");
-              });
+
+            $(".content-master").html(hugeString);
+
+            $(".loading").fadeOut("slow", function () {
+            $(".content-master").fadeIn("slow");
+            });
             });
 
 
             //$(".content-master").html("<option value='text' selected=''>Formulario al CIO</option><option value='text'>PRIDCO Formulario</option></select><br /><br /><button id='btn-next-form' class='btn btn-inverse pull-left' type='button'> Proximo </button>");
-              
+
             });
             });
             });
