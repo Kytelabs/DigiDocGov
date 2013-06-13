@@ -2,6 +2,14 @@ $(document).ready(function (e) {
 
     $(".btn-add-unique").click(function (e) {
 
+        $(".dynamicInputs > input[type='text']").filter(function () { return $(this).val() == ""; }).each(
+            function () {
+                $(this).next().next("br").remove();
+                $(this).next("select").remove();
+                $(this).remove();
+            }
+        );
+
         var jsonForm = $('#formData').serializeObject();
         var jsonObject = JSON.stringify(jsonForm);
 

@@ -34,7 +34,7 @@ $(document).ready(function (e) {
             // Chill broski, all is good in the world.
         }
     });
-
+    /*
     $("#btn-add-experiment").click(function (e) {
 
         $(".dynamicInputs > input[type='text']").filter(function () { return $(this).val() == ""; }).each(
@@ -59,5 +59,6 @@ $(document).ready(function (e) {
             }
         });
     });
+    */
 
 });
