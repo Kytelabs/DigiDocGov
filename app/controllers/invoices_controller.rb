@@ -66,11 +66,14 @@ class InvoicesController < ApplicationController
           end
         end
 
+        creatorName = @invoice.creatorName.gsub(' ','%20')
+        signeeName = @invoice.signeeName.gsub(' ','%20')
+
         #Set email content. 
         subject = "Solicitud%20de%20Contrato"
-        footer = "%0D%0DGracias,%0D%0D%5F%5F%0D%0D#{@invoice['creatorName']}"
+        footer = "%0D%0DGracias,%0D%0D%5F%5F%0D%0D#{creatorName}"
         message = "El%20siguiente%20documento%20requiere%20su%20firma%20para%20aprobaci%C3%B3n.%0D%0Dhttp://tonkabeta.kytelabs.com/examples/require-drawn-signature.html?signatureid=#{@invoice.id}#{footer}"
-        email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{@invoice['signeeName']}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}&fromname=#{@invoice['creatorName']}"
+        email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{signeeName}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}&fromname=#{creatorName}"
 
         #Send email to request signature (with Sendgrid)
         HTTParty.get(email)

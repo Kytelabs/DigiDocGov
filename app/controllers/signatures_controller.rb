@@ -52,13 +52,16 @@ class SignaturesController < ApplicationController
     Invoice.find(signatureID).set(:signature, signature)
     Invoice.find(signatureID).set(:signatureStatus, true)
     Invoice.find(signatureID).set(:canvasHeight, canvasHeight)
-    Invoice.find(signatureID).set(:canvasWidth, canvasWidth) 
+    Invoice.find(signatureID).set(:canvasWidth, canvasWidth)
+
+    creatorName = @invoice.creatorName.gsub(' ','%20')
+    signeeName = @invoice.signeeName.gsub(' ','%20') 
 
     #Set email content. 
     subject = "Solicitud%20de%20Contrato"
-    footer = "%0D%0DGracias,%0D%0D%5F%5F%0D%0D#{@invoice['signeeName']}"
+    footer = "%0D%0DGracias,%0D%0D%5F%5F%0D%0D#{signeeName}"
     message = "El%20siguiente%20documento%20ha%20sido%20aprobado.%0D%0Dhttp://digidocgov.herokuapp.com/invoices/#{@invoice.id}.json#{footer}"
-    email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{@invoice['signeeName']}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}&fromname=#{@invoice['creatorName']}"
+    email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{signeeName}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}&fromname=#{creatorName}"
 
 
     #Send email notifying approval (with Sendgrid)
