@@ -17,6 +17,8 @@ $(document).ready(function (e) {
             }
         }
 
+        leString += "<div class='sigPad signed'><div class='sigWrapper'><div class='typed'>Sir John A. Macdonald</div><canvas id='signature-canvas' class='pad' width='500' height='250'></canvas></div></div>"
+            
         $(".content-master").html(leString);
 
 
@@ -26,7 +28,7 @@ $(document).ready(function (e) {
 
 
 function validKey(string) {
-    if (string != "deleted_at" && string != "updated_at" && string != "created_at" && string != "_id" && string != "version") {
+    if (string != "deleted_at" && string != "updated_at" && string != "created_at" && string != "_id" && string != "version" && string != "canvasHeight" && string != "canvasWidth" && string != "signature") {
         return true;
     }
     else {
