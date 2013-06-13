@@ -8,7 +8,7 @@ class Invoice
 
   field :title, type: String
   field :description, type: String
-  field :createdTime, type: Date
+  field :createdTime, type: Date, :default => Time.now
   
   field :current, type: Boolean, :default => false 
   field :signatureStatus, type: Boolean, :default => false 
