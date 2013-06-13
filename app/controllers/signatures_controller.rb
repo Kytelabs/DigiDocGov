@@ -3,13 +3,6 @@ class SignaturesController < ApplicationController
   # GET /signatures.json
   def index
     @signatures = Signature.all
-
-    signID = params[:signatureid]
-    payload = params[:output]
-
-    @thisInvoice = Invoice.where(:id => signID)
-    @thisInvoice.sinature = payload
-    @thisInvoice.signatureStatus = true
     
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +17,7 @@ class SignaturesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @signature }
+      format.json { render json: @signature, :callback => params[:callback] }
     end
   end
 
@@ -49,9 +42,27 @@ class SignaturesController < ApplicationController
   def create
     @signature = Signature.new(params[:signature])
 
-    Invoice.find(@signature.signatureid).set(:signatureid, @signature.signatureid)
-    Invoice.find(@signature.signatureid).set(:output, @signature.output)
-    Invoice.find(@signature.signatureid).set(:signatureStatus, true)
+    signatureID = params[:signatureid]
+    signature = params[:output]
+    canvasHeight = params[:canvasHeight]
+    canvasWidth = params[:canvasWidth]
+
+    # Update invoice with signature
+    @invoice = Invoice.find(signatureID)
+    Invoice.find(signatureID).set(:signature, signature)
+    Invoice.find(signatureID).set(:signatureStatus, true)
+    Invoice.find(signatureID).set(:canvasHeight, canvasHeight)
+    Invoice.find(signatureID).set(:canvasWidth, canvasWidth) 
+
+    #Set email content. 
+    subject = "Solicitud%20de%20Contrato"
+    footer = "%0D%0DGracias,%0D%0D%5F%5F%0D%0D#{@invoice['signeeName']}"
+    message = "El%20siguiente%20documento%20ha%20sido%20aprobado.%0D%0Dhttp://digidocgov.herokuapp.com/invoices/#{@invoice.id}.json#{footer}"
+    email = "https://sendgrid.com/api/mail.send.json?api_user=rgonzalez&api_key=123456&to=#{@invoice['signeeEmail']}&toname=#{@invoice['signeeName']}&subject=#{subject}&text=#{message}&from=#{@invoice['creatorEmail']}&fromname=#{@invoice['creatorName']}"
+
+
+    #Send email notifying approval (with Sendgrid)
+    HTTParty.get(email)
     
     respond_to do |format|
       if @signature.save

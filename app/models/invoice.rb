@@ -12,6 +12,8 @@ class Invoice
   
   field :current, type: Boolean, :default => false 
   field :signatureStatus, type: Boolean, :default => false 
+  field :canvasHeight, type: String
+  field :canvasWidth, type: String
 
   # Creator Info
   field :creatorEmail, type: String
@@ -24,8 +26,8 @@ class Invoice
   field :signeeName, type: String
   field :signeeAgency, type: String
   field :signeeRole, type: String
-  field :signature, type: Array  # [{"name": "email", "fieldType": "text"},{"name": "agency","fieldType": "text"},{"name": "role","fieldType": "text"}]
-
+  field :signature, type: Array  
+  
 # Embedded Relations
   embeds_many :datavalues
 end
