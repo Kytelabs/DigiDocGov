@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>DigiDoc</title>
+    <title>Leanpad</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -16,8 +16,6 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
     <link rel="stylesheet" href="css/main.css">
-    <link href="css/fontello.css" rel="stylesheet" type="text/css" />
-
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     <!-- Typekit account -->
     <script type="text/javascript" src="//use.typekit.net/jxj7irc.js"></script>
@@ -38,11 +36,12 @@
                     <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar">
                     </span>
                 </button>
-                <a href="#" class="brand">Digidoc</a>
+                <a href="#" class="brand">Leanpad</a>
                 <div class="nav-collapse collapse">
                     <ul class="nav">
-                        <li class="active"><a href="nindex.html">Home</a></li>
-                        <li><a href="formindex.html">Formularios</a></li>
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <!--/.nav-collapse -->
@@ -52,41 +51,52 @@
             <div id="sidebar">
                 <div class="sidebar-nav">
                     <ul class="nav nav-tabs nav-stacked">
-                        <li class="btn-createExperiment"><a href="llenarformulario.html" class="sidebar-tab"><span class="exp-digit">+</span><span
-                            class="exp-title">Llenar Formulario</span></a> </li>
+                        <li class="btn-createExperiment"><a class="sidebar-tab"><span class="exp-digit">+</span><span
+                            class="exp-title">Create new experiment</span></a> </li>
                         <li>
                             <div class="seperator">
                             </div>
                         </li>
-                        <li><a class="sidebar-tab"><span class="exp-digit"><i class="icon-check"></i></span><span class="exp-title">ASUME Lorem Ipsum<br />
-                            01/25/2012</span> </a></li>
-                        <li><a class="sidebar-tab"><span class="exp-digit"><i class="icon-check"></i></span><span class="exp-title">AAA Lorem Ipsum<br />
-                            01/25/2012</span> </a></li>
-                        <li><a class="sidebar-tab"><span class="exp-digit"><i class="icon-check"></i></span><span class="exp-title">AAA Tech Summit<br />
-                            01/25/2012</span> </a></li>
-                        <li><a class="sidebar-tab"><span class="exp-digit"><i class="icon-check"></i></span><span class="exp-title">OGP Le Money<br />
-                            01/25/2012</span> </a></li>
+                        <li><a class="sidebar-tab"><span class="exp-digit">03</span><span class="exp-title">First
+                            set of interviews<br />
+                            01/25/2012 - 10 People</span> </a></li>
+                        <li class="active"><a class="sidebar-tab"><span class="exp-digit">02</span><span
+                            class="exp-title">Teenagers experiment in plaza<br />
+                            01/25/2012 - 10 People</span> </a></li>
+                        <li><a class="sidebar-tab"><span class="exp-digit">01</span><span class="exp-title">Teenagers
+                            experiment in plaza<br />
+                            01/25/2012 - 10 People</span> </a></li>
                     </ul>
                 </div>
                 <div class="clearfix">
                 </div>
             </div>
             <div id="content">
-                <div class="container-fluid content-master" style="display:none;">
-                    <h1>Bienvenido a DigiDoc!</h1>
-                    <p style=" margin-top:2em; line-height:1.5em;">Puede ver un listado de las solicitudes ya firmadas a la derecha.</p>
-                                                       <div class="statcontainer">
+                <div class="container-fluid content-master">
+                    <h1>
+                        New Interview</h1>
+                  <hr />
+                    <form id="interviewData">
+                        <div class="control-group">
+                        	<input id="experiment_id" type="hidden" name="experiment_id" value="" />
+                            <input name="name" class="input-xlarge" type="text" placeholder="Name" />
+                            <br/>
+                            <input name="email" class="input-xlarge" type="text" placeholder="Email" />
+                        	<br/>
+                            <input name="phone" class="input-xlarge" type="text" placeholder="Phone" />
+                        	<br/>
+                            <input name="interviewDate" class="input-xlarge" type="text" placeholder="Interview Date" />
+                        </div>
 
-                                   </div>
+                    </form>
+                    <hr />
+                    <button id="btn-add-interview" class="btn btn-inverse pull-left" type="button">Add Interview</button>
                 </div>
-
+            </div>
         </div>
-    </div>
-    <div class="loading">
-        <img src="img/loading.gif" />
-    </div>
-    <div id="footer">
-    </div>
+
+        <div id="footer">
+        </div>
     </div>
     <!-- Javascript  -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
@@ -94,21 +104,25 @@
     <script src="js/vendor/bootstrap.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
 
-    <script src="js/main.js"></script>
     <script src="js/plugins.js"></script>
+    <script src="js/vendor/jquery.serialize-object.compiled.js" type="text/javascript"></script>
+
+    <script src="js/addInterview.js"></script>
+
     <!-- Google Analytics -->
-     <script type="text/javascript">
+    <script type="text/javascript">
 
-         var _gaq = _gaq || [];
-         _gaq.push(['_setAccount', 'UA-39188514-3']);
-         _gaq.push(['_trackPageview']);
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-39188514-1']);
+        _gaq.push(['_setDomainName', 'leanpad.com']);
+        _gaq.push(['_trackPageview']);
 
-         (function () {
-             var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-             ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-         })();
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
 
-	</script>
+    </script>
 </body>
 </html>
