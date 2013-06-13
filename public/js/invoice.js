@@ -17,8 +17,7 @@ $(document).ready(function (e) {
         var stringToAppend = "<div class='control-group dynamicInputs dynamicForms'>";
         for (var i = 0; i < datafields.length; i++) {
             //<input name='datafields[][name]' class='input-xxlarge' type='text' placeholder='Ej. Tipo de Contrato, Jefe de Agencia, etc.' /> <select name='datafields[][fieldType]'><option value='text' selected>Text Field</option><option value='text'>Large Field</option><option value='text'>Radio Button</option></select>
-            stringToAppend += "<input name='' class='input-xxlarge' value='" + datafields[i].name + "' />";
-            stringToAppend += "<br />";
+            stringToAppend += "<input name='description' class='input-xxlarge' type='text' placeholder='"+ datafields[i].name +"' /><br />";
         }
         stringToAppend += "</div></form>";
         $(".content-master").append(stringToAppend);
