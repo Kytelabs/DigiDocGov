@@ -65,6 +65,8 @@ class SignaturesController < ApplicationController
 
 
     #Send email notifying approval (with Sendgrid)
+    ap 'Email Data Confirmation'
+    ap email
     HTTParty.get(email)
     
     respond_to do |format|
