@@ -65,53 +65,37 @@
                                     <table class="table table-striped table-hover" id="info">
                                         <thead>
                                             <tr>
-                                                <th>
-                                                    #
-                                                </th>
-                                                <th>
-                                                    Nombre
-                                                </th>
-                                                <th>
-                                                    Agencia
-                                                </th>
-                                                <th>
-                                                    Ultimo Update
-                                                </th>
-                                                <th>
-                                                    Edit
-                                                </th>
-                                                <th>
-                                                </th>
+                                                <th>#</th>
+                                                <th>Nombre</th>
+                                                <th>Agencia</th>
+                                                <th>Ultimo Update</th>
+                                                <th>Edit</th>
+                                                <th></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr data-container="body" rel="tooltip" data-toggle="tooltip">
-                                                <td>
-                                                    <a class="table-anchor" href="http://leanpad.herokuapp.com/interviews/5166fbb1d711db8b07000023.json">
-                                                        1</a>
-                                                </td>
-                                                <td>
-                                                    PRIDCO Formulario
-                                                </td>
-                                                <td>
-                                                    PRIDCO
-                                                </td>
-                                                <td>
-                                                    2013-03-23
-                                                </td>
-                                                <td>
-                                                    <a href="http://leanpad.herokuapp.com/interviews/5166fbb1d711db8b07000023.json" class="deletePerson">
-                                                        Edit</a>
-                                                </td>
-                                                <td>
-                                                    <input type="checkbox">
-                                                </td>
-                                            </tr>
+										
+										<% form_count = 1 %>
+										
+										<% @forms.each do |form| %>
+											<tr data-container="body" rel="tooltip" data-toggle="tooltip">
+												<td><a class="table-anchor" href="http://leanpad.herokuapp.com/interviews/<%= form.id %>.json"><%= form_current %></a></td>
+												<td><%= form.title %></td>
+												<td><%= form.agency %></td>
+												<td><%= form.createdTime %></td>
+												<td><a href="#">Edit</a></td>
+												<td><input type="checkbox"></td>
+												<!--
+													<td><%= link_to 'Show', form %></td>
+													<td><%= link_to 'Edit', edit_form_path(form) %></td>
+												-->
+											</tr>
+										<% end %>
                                           
                                         </tbody>
                                     </table>
                                     <button id="btn-add-form" class="btn btn-inverse pull-right" type="button">
-                                        Crear Forma</button>
+                                        Crear Formulario</button>
                                     <div class="clearfix">
                                     </div>
                                 </div>
